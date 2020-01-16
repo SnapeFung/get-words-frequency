@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
 from get_chinese_meaning import get_chinese
+from get_sentence import get_sentence
 
 # read the file
 # f_name = input('input the essay file name')
@@ -30,6 +31,7 @@ with open("already_know.txt", 'w') as f:  # 刷新已知单词文件
     f.write(already_know_sort)
 
 # filter already know words
+# Descending sort list
 filter_words = [i for i in split_words if i not in already_know]
 
 dic = {}
@@ -41,7 +43,18 @@ for i in filter_words:
 
 sort_dic = sorted(dic.items(), key=lambda x: x[1], reverse=True)  # sort the dictionary
 
+# output words and frequency
 # for word, frequency in sort_dic:
 #     print(word, frequency)
-# print(get_chinese(list(dic.keys()), list(dic.values())))
-print(get_chinese(list(dic.keys())))
+
+
+index = 0
+while index != len(filter_words):
+    print(get_chinese(filter_words[index]))
+    sentence_list = get_sentence(filter_words[index], essay_content)
+    index = 1
+    for i in sentence_list:
+        print("例句{}".format(index), i)
+        index += 1
+    print('=' * 40)
+    index += 1
