@@ -47,14 +47,18 @@ sort_dic = sorted(dic.items(), key=lambda x: x[1], reverse=True)  # sort the dic
 # for word, frequency in sort_dic:
 #     print(word, frequency)
 
+print(sort_dic)
 if __name__ == '__main__':
     index = 0
-    while index != len(filter_words):
-        print(index + 1, get_chinese(filter_words[index]))
-        sentence_list = get_sentence(filter_words[index], essay_content)
+    while index != len(sort_dic):
+        print(index + 1, get_chinese(sort_dic[index][0]))
+        print('出现次数：' + str(sort_dic[index][1]))
+        sentence_list = get_sentence(sort_dic[index][0], essay_content)
         sentence_index = 1
         for i in sentence_list:
             print("例句{}".format(sentence_index), i)
             sentence_index += 1
+            if sentence_index == 5:
+                break
         print('=' * 40)
         index += 1

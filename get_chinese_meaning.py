@@ -18,9 +18,8 @@ def get_chinese(word):
                 str_words_list += word + '\n' + item.text
     
     except Exception:
-        print()
         str_words_list += '\n' + "Sorry, there is a error! We can't find the word '{}'".format(
-            word) + '\n' + '=' * 40
+            word)
     return str_words_list
 
 
